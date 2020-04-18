@@ -1,10 +1,14 @@
-package domain;
+package com.freshvotes.domain;
+
+import java.io.Serializable;
 
 import javax.persistence.Embeddable;
 import javax.persistence.ManyToOne;
-@Embeddable
-public class CommentId {
 
+@Embeddable
+public class VoteId implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 	@ManyToOne
 	private User user;
 	@ManyToOne
@@ -25,5 +29,4 @@ public class CommentId {
 	public void setFeature(Feature feature) {
 		this.feature = feature;
 	}
-
 }

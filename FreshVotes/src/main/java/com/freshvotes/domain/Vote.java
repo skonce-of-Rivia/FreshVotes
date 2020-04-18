@@ -1,4 +1,4 @@
-package domain;
+package com.freshvotes.domain;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
