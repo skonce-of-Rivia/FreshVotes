@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>FreshVotes Dashboard</title>
@@ -7,8 +7,9 @@
 <body>
 	<h1>FreshVotes Dashboard</h1>
 
-	<div>
-		<a href="/logout">Logout</a>
-	</div>
+	<form action="/logout" method="post">
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+		<button type="submit">Logout</button>
+	</form>
 </body>
 </html>
