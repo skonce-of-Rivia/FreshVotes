@@ -6,6 +6,7 @@
 </head>
 <body>
 	<form action="" method="post">
+	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 		<fieldset>
 			<legend>Please Login</legend>
 			<!-- use param.error assuming FormLoginConfigurer#failureUrl contains the query parameter error -->
