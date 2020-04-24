@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>FreshVotes Registration</title>
+</head>
+<body>
+	<h2>Register for an account</h2>
+
+	<form action="" method="post">
+		<input type="hidden" name="${_csrf.parameterName}"
+			value="${_csrf.token}"/> 
+		Name: <input type="text" th:field="${user.name}" /> <br /> 
+		Email adress: <input type="text" th:field="${user.username}" /> <br />
+		Password: <input type="password" th:field="${user.password}" /> <br />
+		Confirm password: <input type="password" id="confirmPassword" /> <br />
+		<br />
+		<button type="submit">Create Account</button>
+	</form>
+</body>
+</html>

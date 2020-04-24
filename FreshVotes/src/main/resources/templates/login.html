@@ -3,10 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <title>FreshVotes Login</title>
+<script src="https://code.jquery.com/jquery-3.5.0.slim.min.js"
+	integrity="sha256-MlusDLJIP1GRgLrOflUQtshyP0TwT/RHXsI1wWGnQhs="
+	crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+$(function()){ 
+	$("#createAccountButton").click(function () {
+		window.location.href = "/register";
+	})
+});
+</script>
 </head>
 <body>
 	<form action="" method="post">
-	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+		<input type="hidden" name="${_csrf.parameterName}"
+			value="${_csrf.token}"
+		/>
 		<fieldset>
 			<legend>Please Login</legend>
 			<!-- use param.error assuming FormLoginConfigurer#failureUrl contains the query parameter error -->
@@ -21,14 +34,18 @@
 			</div>
 			<p>
 				<label for="username">Username</label> <input type="text"
-					id="username" name="username" />
+					id="username" name="username"
+				/>
 			</p>
 			<p>
 				<label for="password">Password</label> <input type="password"
-					id="password" name="password" />
+					id="password" name="password"
+				/>
 			</p>
 			<div>
 				<button type="submit" class="btn">Log in</button>
+				<button type="button" class="btn" id="createAccountButton">Create
+					an account</button>
 			</div>
 		</fieldset>
 	</form>
