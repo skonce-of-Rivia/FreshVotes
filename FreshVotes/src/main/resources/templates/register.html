@@ -2,20 +2,63 @@
 <html xmlns:th="http://thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
 <title>FreshVotes Registration</title>
+<script type="text/javascript">
+	function goBack() {
+		window.location.href = "/login";
+	}
+</script>
 </head>
 <body>
-	<h2>Register for an account</h2>
+	<div class="container">
+		<div class="card mx-auto mt-2 col-md-6">
+			<div class="card-header bg-primary text-white mt- font-weight-bold">Register
+				for an account</div>
+			<div class="card-body">
+				<div class="row">
+					<div class="col-12">
+						<form action="" method="post">
+							<input type="hidden" name="${_csrf.parameterName}"
+								value="${_csrf.token}" />
 
-	<form action="" method="post">
-		<input type="hidden" name="${_csrf.parameterName}"
-			value="${_csrf.token}"/> 
-		Name: <input type="text" th:field="${user.name}" /> <br /> 
-		Email adress: <input type="text" th:field="${user.username}" /> <br />
-		Password: <input type="password" th:field="${user.password}" /> <br />
-		Confirm password: <input type="password" id="confirmPassword" /> <br />
-		<br />
-		<button type="submit">Create Account</button>
-	</form>
+							<div class="form-group row">
+								<label for="name" class="col-sm-12 col-md-3 form-label my-2">Name:</label>
+								<input type="text"
+									class="col-sm-12 col-md-8 form-control form-control-sm"
+									th:field="${user.name}" />
+								<label for="username" class="col-sm-12 col-md-3 form-label my-2">Email
+									adress:</label>
+								<input type="text"
+									class="col-sm-12 col-md-8 form-control form-control-sm"
+									th:field="${user.username}" />
+								<label for="password" class="col-sm-12 col-md-3 form-label my-2">Password:</label>
+								<input type="text"
+									class="col-sm-12 col-md-8 form-control form-control-sm"
+									th:field="${user.password}" />
+								<label for="confirmPassword"
+									class="col-sm-12 col-md-3 form-label my-2">Confirm
+									password:</label>
+								<input type="text"
+									class="col-sm-12 col-md-8 form-control form-control-sm"
+									id="confirmPassword" />
+								<div class="row col-sm-12 mt-3">
+									<button type="submit"
+										class="btn btn-outline-primary btn-sm mx-auto">Create
+					register					Account</button>
+									<button type="button"
+										class="btn btn-outline-primary btn-sm mx-auto"
+										onclick="goBack()">Back</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

@@ -2,52 +2,60 @@
 <html xmlns:th="http://thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
 <title>FreshVotes Login</title>
-<script src="https://code.jquery.com/jquery-3.5.0.slim.min.js"
-	integrity="sha256-MlusDLJIP1GRgLrOflUQtshyP0TwT/RHXsI1wWGnQhs="
-	crossorigin="anonymous"
-></script>
 <script type="text/javascript">
-$(function()){ 
-	$("#createAccountButton").click(function () {
+	function myFunction() {
 		window.location.href = "/register";
-	})
-});
+	}
 </script>
 </head>
 <body>
-	<form action="" method="post">
-		<input type="hidden" name="${_csrf.parameterName}"
-			value="${_csrf.token}"
-		/>
-		<fieldset>
-			<legend>Please Login</legend>
-			<!-- use param.error assuming FormLoginConfigurer#failureUrl contains the query parameter error -->
-			<div th:if="${param.error != null}">
-				Failed to login.
-				<div th:if="${SPRING_SECURITY_LAST_EXCEPTION != null}">
-					Reason: <span th:text="${SPRING_SECURITY_LAST_EXCEPTION.message}"></span>
+	<div class="container">
+		<div class="card mx-auto mt-2 col-md-6">
+			<div class="card-header bg-primary text-white mt-2 font-weight-bold">Please Login</div>
+			<div class="card-body">
+				<div class="row">
+					<div class="col-12">
+						<form action="" method="post">
+							<input type="hidden" name="${_csrf.parameterName}"
+								value="${_csrf.token}" />
+							<!-- use param.error assuming FormLoginConfigurer#failureUrl contains the query parameter error -->
+							<div class="alert alert-danger my-4" role="alert"
+								th:if="${param.error != null}">
+								Failed to login.
+								<div th:if="${SPRING_SECURITY_LAST_EXCEPTION != null}">
+									Reason: <span
+										th:text="${SPRING_SECURITY_LAST_EXCEPTION.message}"></span>
+								</div>
+							</div>
+							<!-- the configured LogoutConfigurer#logoutSuccessUrl is /login?logout and contains the query param logout -->
+							<div class="alert-success my-4" role="alert"
+								th:if="${param.logout != null}">You have been logged out.</div>
+							<div class="form-group row">
+								<label class="col-sm-12 col-md-3 form-label my-2" for="username">Username</label>
+								<input class="col-sm-12 col-md-8 form-control form-control-sm" type="text"
+									id="username" name="username" />
+								<label class="col-sm-12 col-md-3 form-label my-2" for="password">Password</label>
+								<input class="col-sm-12 col-md-8 form-control form-control-sm" type="password"
+									id="password" name="password" />
+								<div class="row col-sm-12 mt-3">
+									<button type="submit"
+										class="btn btn-outline-primary btn-sm mx-auto">Log in</button>
+									<button type="button"
+										class="btn btn-outline-primary btn-sm mx-auto"
+										id="createAccountButton" onclick="myFunction()">Create
+										an account</button>
+								</div>
+							</div>
+						</form>
+					</div>
 				</div>
 			</div>
-			<!-- the configured LogoutConfigurer#logoutSuccessUrl is /login?logout and contains the query param logout -->
-			<div th:if="${param.logout != null}">You have been logged out.
-			</div>
-			<p>
-				<label for="username">Username</label> <input type="text"
-					id="username" name="username"
-				/>
-			</p>
-			<p>
-				<label for="password">Password</label> <input type="password"
-					id="password" name="password"
-				/>
-			</p>
-			<div>
-				<button type="submit" class="btn">Log in</button>
-				<button type="button" class="btn" id="createAccountButton">Create
-					an account</button>
-			</div>
-		</fieldset>
-	</form>
+		</div>
+	</div>
 </body>
 </html>

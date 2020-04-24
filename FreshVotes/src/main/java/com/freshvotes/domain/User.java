@@ -26,6 +26,8 @@ public class User {
 	private String name;
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "user")
 	Set<Authority> authorities = new HashSet<>();
+	@OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY, mappedBy = "user")
+	private Set<Product> products = new HashSet<>();
 
 	public Long getId() {
 		return id;
@@ -65,6 +67,14 @@ public class User {
 
 	public void setAuthorities(Set<Authority> authorities) {
 		this.authorities = authorities;
+	}
+
+	public Set<Product> getProducts() {
+		return products;
+	}
+
+	public void setProducts(Set<Product> products) {
+		this.products = products;
 	}
 
 	@Override
