@@ -1,5 +1,7 @@
 package com.freshvotes.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,5 +23,9 @@ public class ProductService {
 			
 		return productRepository.save(product);	
 		
+	}
+	
+	public Optional<Product> findProductById(Long id) {
+		return productRepository.findById(id);
 	}
 }
