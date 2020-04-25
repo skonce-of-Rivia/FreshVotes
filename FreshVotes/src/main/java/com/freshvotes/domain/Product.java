@@ -22,6 +22,7 @@ public class Product {
 	private Long id;
 	@ManyToOne
 	private User user;
+	private String name;
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "product")
 	private Set<Feature> features = new HashSet<>();
 	private Boolean isPublished;
@@ -40,6 +41,14 @@ public class Product {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public Set<Feature> getFeatures() {
