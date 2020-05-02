@@ -25,16 +25,12 @@ public class ProductController {
 
 	@Autowired
 	ProductService productService;
-	
-	@GetMapping("/products")
-	public String getProducts() {
-		return "product";
-	}
-	
+
 	@GetMapping("products/{productId}")
-	public String getProduct(@PathVariable Long productId, ModelMap model, HttpServletResponse response) throws NotFoundException, IOException {
+	public String getProduct(@PathVariable Long productId, ModelMap model, HttpServletResponse response)
+			throws NotFoundException, IOException {
 		Optional<Product> maybeProduct = productService.findProductById(productId);
-		if(maybeProduct.isPresent()){
+		if (maybeProduct.isPresent()) {
 			Product product = maybeProduct.get();
 			model.put("product", product);
 		} else {
@@ -43,11 +39,16 @@ public class ProductController {
 		}
 		return "product";
 	}
-	
+
 	@PostMapping("/products")
 	public String createProduct(@AuthenticationPrincipal User user) {
-		
 		productService.saveProduct(user);
-		return "redirect:/products";
+		return "redirect:/products/";
+	}
+
+	@PostMapping("/products/{productId}")
+	public String updateProducte(@PathVariable Long productId, Product product) {
+		productService.updateProduct(product);
+		return "redirect:/dashboard";
 	}
 }

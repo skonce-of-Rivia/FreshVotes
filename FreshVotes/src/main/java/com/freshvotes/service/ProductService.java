@@ -1,5 +1,6 @@
 package com.freshvotes.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,16 @@ public class ProductService {
 		
 	}
 	
+	public Product updateProduct(Product product) {
+		productRepository.findByIdWithUser(product.getId());
+		return productRepository.save(product);
+	}
+	
 	public Optional<Product> findProductById(Long id) {
 		return productRepository.findById(id);
+	}
+	
+	public List<Product> findProductsByUser(User user){
+		return productRepository.findByUser(user);
 	}
 }

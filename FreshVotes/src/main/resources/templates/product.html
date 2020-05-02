@@ -2,14 +2,43 @@
 <html xmlns:th="http://thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
 <title>FreshVotes Product</title>
+<script type="text/javascript">
+function goBack(){
+	window.location.href = "/dashboard";
+}
+</script>
 </head>
 <body>
 	<div class="container" th:if="${product != null}">
-		<h1>Product</h1>
-
-		<div th:text="|Is product published: ${product.isPublished}|">
-			Here's the content of the div text</div>
+		<div class="card mx-auto mt-2 col-md-6">
+			<div class="card-header bg-primary text-white mt-2 font-weight-bold">Product</div>
+			<div class="card-body">
+				<form action="" method="post">
+					<input type="hidden" name="${_csrf.parameterName}"
+						value="${_csrf.token}" />
+					<input type="hidden" th:field="${product.id}">
+					<input type="hidden" th:field="${product.user}">
+					<div class="form-group row">
+						<label for="name" class="col-sm-12 col-md-3 form-label my-2">Name:</label>
+						<input type="text"
+							class="col-sm-12 col-md-8 form-control form-control-sm"
+							th:field="${product.name}" />
+					</div>
+					<div class="custom-control custom-switch">
+						<input type="checkbox" class="custom-control-input" th:field=${product.isPublished}>
+						<label class="custom-control-label" for="isPublished1">Is published</label>
+					</div>
+					<button class="btn btn-outline-primary btn-sm mx-auto mt-3">Save
+						product</button>
+					<button class="btn btn-outline-primary btn-sm mx-auto mt-3" onclick="goBack()">Back</button>
+				</form>
+			</div>
+		</div>
 	</div>
 </body>
 </html>
