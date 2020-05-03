@@ -2,10 +2,7 @@
 <html xmlns:th="http://thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-	crossorigin="anonymous">
+<script th:replace="fragments/header :: headerElement"></script>
 <title>FreshVotes Login</title>
 <script type="text/javascript">
 	function myFunction() {
@@ -14,9 +11,11 @@
 </script>
 </head>
 <body>
+	<div th:replace="fragments/header :: headerNavBar"></div>
 	<div class="container">
 		<div class="card mx-auto mt-2 col-md-6">
-			<div class="card-header bg-primary text-white mt-2 font-weight-bold">Please Login</div>
+			<div class="card-header bg-primary text-white mt-2 font-weight-bold">Please
+				Login</div>
 			<div class="card-body">
 				<div class="row">
 					<div class="col-12">
@@ -37,11 +36,11 @@
 								th:if="${param.logout != null}">You have been logged out.</div>
 							<div class="form-group row">
 								<label class="col-sm-12 col-md-3 form-label my-2" for="username">Username</label>
-								<input class="col-sm-12 col-md-8 form-control form-control-sm" type="text"
-									id="username" name="username" />
-								<label class="col-sm-12 col-md-3 form-label my-2" for="password">Password</label>
-								<input class="col-sm-12 col-md-8 form-control form-control-sm" type="password"
-									id="password" name="password" />
+								<input class="col-sm-12 col-md-8 form-control form-control-sm"
+									type="text" id="username" name="username" /> <label
+									class="col-sm-12 col-md-3 form-label my-2" for="password">Password</label>
+								<input class="col-sm-12 col-md-8 form-control form-control-sm"
+									type="password" id="password" name="password" />
 								<div class="row col-sm-12 mt-3">
 									<button type="submit"
 										class="btn btn-outline-primary btn-sm mx-auto">Log in</button>
@@ -57,5 +56,6 @@
 			</div>
 		</div>
 	</div>
+	<div th:replace="fragments/footer :: footer"></div>
 </body>
 </html>
